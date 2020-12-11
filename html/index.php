@@ -1,0 +1,195 @@
+<?php 
+	include_once 'connect.php';
+	session_start();
+	if (isset($_GET['page'])) 
+	 	{
+	      $page = $_GET['page'];
+	   	}
+	  else
+	  	{
+	      $page = 'home';
+	   	}
+ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--  <style type="text/css">
+    * {box-sizing:border-box}
+
+/* Slideshow container */
+
+  </style> -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/Test.css">
+	
+	<title>Document</title>
+
+    <link rel="stylesheet" href="thumucmoi/css/jquery.fancybox.css">
+   
+    <link rel="stylesheet" href="thumucmoi/css/jquery.bxslider.css">
+    
+    
+    <link rel="stylesheet" href="thumucmoi/css/jquery-ui-slider.css">
+    
+    
+    <script src="thumucmoi/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+	<div align="center">
+		<table height="60">
+			<tr >
+				<td width="400" align="center">
+					<a href="index.php"><img src="../images/logo.jpg" /></a>
+<!-- <p ><h2 style="color: red">donghochinhhang.net</h2></p> -->
+				</td>
+				<td width="100">
+					<div class="seach">
+						<input type="text"  placeholder="Nhập sản phẩm tìm kiếm....">
+					</div>
+				</td>
+				<td width="200">
+					<button type="submit" >Tìm kiếm</button>
+				</td>
+				<td>
+					<img src="../images/phones.jpg" >
+				</td>
+				<td>
+					<a href="index.php?page=detail_order" ><img src="../images/shop.png" style="width: 50px;height: 50px" alt=""><sup style="color: red;"><?php  
+                              $quantity = 0;
+                              if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                                  foreach ($_SESSION['cart'] as $id => $pro) {
+                                    $quantity += $pro['qty'];
+                                 }
+                              }
+                              echo $quantity;
+                           ?></sup> <b class="caret"></b></a>
+				</td>
+				<td >
+					<a href="../admin/index.php"><img src="../images/avatar.png" style="width: 50px;height: 50px"></a>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+
+
+
+
+
+<div class="slide">
+      <img src="../images/abc1.jpg" class="slide-item" number="0" style="width: 100%" />
+      <img src="../images/abc2.jpg" class="slide-item" number="1" style="display: none; width: 100%;" />
+      <img src="../images/abc3.jpg" class="slide-item" number="2" style="display: none;width: 100%" />
+    
+      <a href="#" class="next">></a>
+      <a href="#" class="prev"><</a>
+   </div>
+   <script src="jquery-3.5.0.js"></script>
+   <script>
+     $(()=>{
+
+      $('.next').click(function(){
+        changeImage('next');
+      })
+
+      $('.prev').click(function(){
+        changeImage('prev');
+      })
+
+     })
+
+     function changeImage(type){
+      let imgSelectVisible = $('img.slide-item:visible');
+      let imgVisible = parseInt(imgSelectVisible.attr('number'));
+      let eqNumber = type === 'next' ? imgVisible + 1 : imgVisible - 1;
+
+      if (eqNumber >= $('.slide-item').length){
+          eqNumber = 0
+      }
+  
+      $('img.slide-item').eq(eqNumber).fadeIn()
+
+      imgSelectVisible.fadeOut();
+      }
+      setInterval(changeImage,2000)
+      
+   </script>
+	<div class="Menu" style="padding-top: 40px;">
+		<nav>
+		<ul id="menu-bar">
+				<li><a href="#">Đồng hồ Rolex</a>
+          <ul class="sub-menu">
+            <li><a href="menu.php">Dưới 10 triệu</a></li>	
+            <li><a href="">Từ 10-20triệu</a></li>
+            <li><a href="">Trên 20triệu</a></li>
+          </ul>
+        </li>
+				<li><a href="#">Đồng hồ Omega</a>
+        <ul class="sub-menu">
+            <li><a href="menu.php">Dưới 10triệu</a></li>
+            <li><a href="">Từ 10-20triệu</a></li>
+            <li><a href="">Trên 2triệu</a></li>
+          </ul></li>
+				<li><a href="#">Đồng hồ Automatic</a>
+				 <ul class="sub-menu">
+            <li><a href="menu.php">Dưới 10triệu</a></li>
+            <li><a href="">Từ 10-20triệu</a></li>
+            <li><a href="">Trên 20triệu</a></li>
+          </ul></li>
+				<li><a href="#">Đồng hồ Quartz</a>
+				 <ul class="sub-menu">
+            <li><a href="menu.php">Dưới 10triệu</a></li>
+            <li><a href="">Từ 10-20triệu</a></li>
+            <li><a href="">Trên 20triệu</a></li>
+          </ul></li>
+				<li><a href="#">Đồng hồ Longines</a>
+				 <ul class="sub-menu">
+            <li><a href="menu.php">Dưới 1triệu</a></li>
+            <li><a href="">Từ 1-2triệu</a></li>
+            <li><a href="">Trên 2triệu</a></li>
+          </ul></li>
+			</ul>
+		</nav>
+	</div>
+
+
+	<?php 
+		if ($page=='order'||$page=='detail_order'||$page == 'delete.php') {
+			# code...
+			include_once $page.'.php';
+		}
+		else
+		{
+			include_once $page.'.php';
+		}
+	 ?>
+	<div id="clear"></div>
+	<div id="end"  >
+		<!-- //<div style="width: 700px;" align="center"; margin-top: 30px > -->
+			<div style="width: 700px;padding-top: 70px; margin-left: 40px;" align="center">
+				<!-- <div style="position: relative;padding-top: 20px;margin-top: 30px;"> -->
+			<a href=""><img src="../images/logo.jpg" /></a>
+			<h3>Công ty TNHH A&M | 5S VIỆT NAM</h3>
+			<p style="color: #EEEEEE">Công Ty TNHH A&M | 5S VIỆT NAM</p>
+						    <p style="color: #AAAAAA"><span>Website:</span>được phát triển & vận hành bởi hệ thống: ĐỒNG HỒ CHÍNH HÃNG</p>
+						    <p style="color: #AAAAAA">Địa chỉ: Tầng 5, Tòa nhà 169, Bùi Thị Xuân, Quận Hai Bà Trưng, HN</p>
+						    <p style="color: #AAAAAA">Mã số doanh nghiệp: 010101010101</p>
+			<p>Website được phát triển & vận hành bởi hệ thống ĐỒNG HỒ CHÍNH HÃNG </p>
+		</div>
+		<div style="padding-top: 85px;padding-left: 40px ">
+			<h3>Kết nối với chúng tôi</h3>
+			<p style="color: #AAAAAA">Chính sách quy định</p>
+					<p style="color: #AAAAAA">Chính sách mua bán hàng</p>
+					<p style="color: #AAAAAA">Chính sách giao hàng</p>
+					<p style="color: #AAAAAA">Giao hàng - Thanh toán</p>
+					<p style="color: #AAAAAA">Chính sách bảo hành</p>
+
+
+
+		</div>
+    <div style="padding-top: 40px; padding-left: 10px;"><a href =""><img src="../images/footer_2.png"></a></div>
+	</div>
+	
+</body>
+</html> 

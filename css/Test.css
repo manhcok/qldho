@@ -1,0 +1,152 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+#menu-bar {
+	display: flex;
+	width: 1210px;
+	margin: 100px;
+	list-style-type: none;
+	height: 50px;
+	background-color: yellow;
+
+}
+ul {
+	list-style-type: none;
+}
+#menu-bar > li {
+	width: 20%;
+	text-align: center;
+	height: 30px;
+	margin: 10px 0;
+/*	border-right: 1px solid;*/
+	line-height: 30px;
+}
+#menu-bar > li:hover > a {
+	color: red;
+}
+
+#menu-bar a {
+	list-style-type: none;
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav li:hover > .sub-menu {
+	display: block; /*hiện menu con*/
+}
+
+nav li {
+	position: relative;/*hiện menu khi trỏ chuột*/
+}
+.sub-menu {
+	background: linear-gradient(yellow,white);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	display: none; 
+}
+
+.sub-menu > li {
+	text-align: left;
+	padding: 0 10px; /*căn lề*/
+
+}
+ul.sub-menu  > li:hover{
+  background: #ccc;
+  
+
+}
+ul.sub-menu  > li>a :hover{
+  color: red;
+}
+
+.sub-menu > li:last-child {
+	border: none;
+}
+
+#end{
+	background-color: black;
+	color:white;
+	margin:0 auto;
+	display: flex;
+	min-height: 300px;
+
+}
+.slide{
+   width: 100%;
+   margin: auto;
+ 
+   height:420px;
+   position: relative;
+    }
+    .slide a{
+      display: block;
+      width: 90px;
+      height: 50px;
+      background-color:  rgba(0, 0, 0, .10);
+      z-index: 1000;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      line-height: 45px;
+      font-weight: bold;
+    }
+    .next{
+      right:1px;
+      top: 200px;
+      position: absolute;
+
+    }
+    .prev{
+      left:  0px;
+      top: 200px;
+      position: absolute;
+    }
+    .slide img{
+      position: absolute;
+    }
+  .content{
+      width: 1070px;
+      min-height: 500px;
+      margin: auto;
+  }
+  .content li
+  {
+    padding-bottom: 20px;
+    padding-left: 10px;
+    float: left;
+  }
+  .content_hot
+  {
+     width: 1070px;
+      min-height: 500px;
+      margin:50px auto;
+  }
+  .content_hot li
+  {
+    float: left;
+  }
+  #clear
+  {
+    clear: both;
+  }
+.class6{
+  
+    
+  }
+
+.class6 > a :hover{
+  color: red;
+}
+.class6 > li:hover > a {
+  color: red;
+}
+.button{
+  width: auto;
+  margin: auto;
+  display: flex;
+  margin-left: 50px;
+}
